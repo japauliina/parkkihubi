@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
 
+from parkings.api.enforcement.valid_parking_and_permit import ValidParkingAndPermitSerializer, \
+    ValidParkingAndPermitViewSet
 from ..url_utils import versioned_url
 from .check_parking import CheckParking
 from .enforcement_permit import (
@@ -31,6 +33,10 @@ router.register('active_permit_by_external_id',
 router.register('permitseries', EnforcementPermitSeriesViewSet, basename='permitseries')
 router.register('valid_parking', ValidParkingViewSet,
                 basename='valid_parking')
+
+router.register('valid_parking_and_permit', ValidParkingAndPermitViewSet,
+                basename='valid_parking_and_permit')
+
 
 app_name = 'enforcement'
 urlpatterns = [
